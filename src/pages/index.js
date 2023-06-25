@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import styles from '@/styles/Home.module.css';
 import Maps from '@/client/components/Maps';
+import { Provider } from 'react-redux';
+import store from '@/client/utils/store';
 
 export default function Home() {
   return (
@@ -12,7 +14,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} `}>
-        <Maps />
+        <Provider store={store}>
+          <Maps />
+        </Provider>
       </main>
     </>
   );

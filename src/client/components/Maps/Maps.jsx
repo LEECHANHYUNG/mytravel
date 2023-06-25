@@ -3,6 +3,7 @@ import { GoogleMap, useLoadScript } from '@react-google-maps/api';
 import React from 'react';
 import { Spinner } from 'reactstrap';
 import SearchPlaceInput from '../SearchPlaceInput';
+import PlaceInfoPanel from '../PlaceInfoPanel';
 
 const Maps = () => {
   const libraries = useMemo(() => ['places'], []);
@@ -49,6 +50,7 @@ const Maps = () => {
         ref={mapRef}
       >
         <SearchPlaceInput mapRef={mapRef} mapCenter={mapCenter} />
+        <PlaceInfoPanel />
       </GoogleMap>
     </>
   );

@@ -72,7 +72,13 @@
     --card-border-rgb: 200, 200, 200;
   }
 }
-
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--bs-info);
+  border-radius: 10px;
+}
 * {
   box-sizing: border-box;
   padding: 0;
