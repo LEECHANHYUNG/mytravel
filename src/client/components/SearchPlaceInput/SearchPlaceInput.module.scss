@@ -2,7 +2,31 @@
   z-index: 2;
   position: fixed;
   top: 1.875rem;
-  width: 23.125rem;
+  width: 24rem;
   transform: translateX(50%);
   right: 50%;
+  display: flex;
+  align-items: center;
+  &__input {
+    width: 21.25rem;
+  }
+  &__dropdown {
+    background: transparent;
+    & > button {
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      > svg {
+        width: 1.5rem;
+        height: 1.5rem;
+      }
+    }
+    > button:active,
+    > button:focus {
+      border: none;
+    }
+  }
+
+  justify-content: space-between;
 }

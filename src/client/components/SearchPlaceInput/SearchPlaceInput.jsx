@@ -1,11 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Input } from 'reactstrap';
+import {
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Input,
+  UncontrolledDropdown,
+} from 'reactstrap';
 import style from './SearchPlaceInput.module.scss';
 import axios from 'axios';
 import { env } from '../../../../next.config';
 import { useGoogleMap, Autocomplete } from '@react-google-maps/api';
 import { useDispatch } from 'react-redux';
 import { updateSearchPlaceInfo } from '@/client/utils/store/searchPlaceSlice';
+import { AiOutlineMenu, AiFillCalendar } from 'react-icons/ai';
+import { MdOutlineToday } from 'react-icons/md';
+import { CgToday } from 'react-icons/cg';
+import IconWithButton from '../commons/IconWithButton';
 
 const SearchPlaceInput = ({ mapCenter }) => {
   const searchPlaceInputRef = useRef();
@@ -32,13 +43,35 @@ const SearchPlaceInput = ({ mapCenter }) => {
 
   return (
     <div className={style.SearchPlaceInput}>
-      <Autocomplete>
+      <Autocomplete className={style.SearchPlaceInput__input}>
         <Input
           placeholder="여행지 입력"
           innerRef={searchPlaceInputRef}
           onKeyDown={handleInputChange}
         />
       </Autocomplete>
+      <UncontrolledDropdown className={style.SearchPlaceInput__dropdown}>
+        <DropdownToggle color="transparent">
+          <AiOutlineMenu />
+        </DropdownToggle>
+        <DropdownMenu>
+          <DropdownItem>
+            <IconWithButton Icon={<AiFillCalendar />} color="transparent">
+              전체 여행 일정
+            </IconWithButton>
+          </DropdownItem>
+          <DropdownItem>
+            <IconWithButton Icon={<MdOutlineToday />} color="transparent">
+              진행중 여행
+            </IconWithButton>
+          </DropdownItem>
+          <DropdownItem>
+            <IconWithButton Icon={<CgToday />} color="transparent">
+              오늘 여행 일정
+            </IconWithButton>
+          </DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
     </div>
   );
 };
