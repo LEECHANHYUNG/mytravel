@@ -1,17 +1,37 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Input } from 'reactstrap';
 import style from './SearchPlaceInput.module.scss';
-const SearchPlaceInput = () => {
+import axios from 'axios';
+import { env } from '../../../../next.config';
+import { useGoogleMap } from '@react-google-maps/api';
+
+const SearchPlaceInput = ({ mapCenter }) => {
   const searchPlaceInputRef = useRef();
-  const handleInputChange = () => {
-    console.log(searchPlaceInputRef.current.value);
+  const map = useGoogleMap();
+  const [newLocation, setNewLocation] = useState(mapCenter);
+  const handleInputChange = (event) => {
+    if (event.key === 'Enter') {
+      axios
+        .get(
+          `/maps/api/place/findplacefromtext/json?input=${searchPlaceInputRef.current.value}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=${env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}`
+        )
+        .then((res) => {
+          setNewLocation(res.data.candidates[0].geometry.location);
+        });
+    }
   };
+  useEffect(() => {
+    if (map) {
+      map.panTo(newLocation);
+    }
+  }, [map, newLocation]);
+
   return (
     <div className={style.SearchPlaceInput}>
       <Input
         placeholder="여행지 입력"
         innerRef={searchPlaceInputRef}
-        onChange={handleInputChange}
+        onKeyDown={handleInputChange}
       />
     </div>
   );
