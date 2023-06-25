@@ -3,7 +3,7 @@ import { Input } from 'reactstrap';
 import style from './SearchPlaceInput.module.scss';
 import axios from 'axios';
 import { env } from '../../../../next.config';
-import { useGoogleMap } from '@react-google-maps/api';
+import { useGoogleMap, Autocomplete } from '@react-google-maps/api';
 
 const SearchPlaceInput = ({ mapCenter }) => {
   const searchPlaceInputRef = useRef();
@@ -28,11 +28,13 @@ const SearchPlaceInput = ({ mapCenter }) => {
 
   return (
     <div className={style.SearchPlaceInput}>
-      <Input
-        placeholder="여행지 입력"
-        innerRef={searchPlaceInputRef}
-        onKeyDown={handleInputChange}
-      />
+      <Autocomplete>
+        <Input
+          placeholder="여행지 입력"
+          innerRef={searchPlaceInputRef}
+          onKeyDown={handleInputChange}
+        />
+      </Autocomplete>
     </div>
   );
 };
