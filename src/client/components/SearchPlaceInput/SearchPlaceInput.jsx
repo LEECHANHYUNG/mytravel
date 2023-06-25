@@ -17,6 +17,7 @@ import { AiOutlineMenu, AiFillCalendar } from 'react-icons/ai';
 import { MdOutlineToday } from 'react-icons/md';
 import { CgToday } from 'react-icons/cg';
 import IconWithButton from '../commons/IconWithButton';
+import Link from 'next/link';
 
 const SearchPlaceInput = ({ mapCenter }) => {
   const searchPlaceInputRef = useRef();
@@ -56,19 +57,25 @@ const SearchPlaceInput = ({ mapCenter }) => {
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem>
-            <IconWithButton Icon={<AiFillCalendar />} color="transparent">
-              전체 여행 일정
-            </IconWithButton>
+            <Link href="/my-all-trips/all-trips">
+              <IconWithButton Icon={<AiFillCalendar />} color="transparent">
+                여행 기록
+              </IconWithButton>
+            </Link>
           </DropdownItem>
           <DropdownItem>
-            <IconWithButton Icon={<MdOutlineToday />} color="transparent">
-              진행중 여행
-            </IconWithButton>
+            <Link href="/my-all-trips/all-trips">
+              <IconWithButton Icon={<MdOutlineToday />} color="transparent">
+                진행중 여행
+              </IconWithButton>
+            </Link>
           </DropdownItem>
           <DropdownItem>
-            <IconWithButton Icon={<CgToday />} color="transparent">
-              오늘 여행 일정
-            </IconWithButton>
+            <Link href="/my-all-trips/all-trips">
+              <IconWithButton Icon={<CgToday />} color="transparent">
+                오늘 여행 일정
+              </IconWithButton>
+            </Link>
           </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
