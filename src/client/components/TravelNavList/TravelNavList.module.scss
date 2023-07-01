@@ -1,0 +1,18 @@
+.TravelNavList {
+  &__header {
+    margin-top: 1.25rem;
+    font-size: 1.5rem;
+  }
+  &__nav {
+    margin-top: 2.125rem;
+
+    &--active {
+      border-bottom: var(--bs-border-radius-sm) solid var(--bs-link-color);
+    }
+  }
+  &__navItem {
+    & > a {
+      color: var(--bs-secondary-color);
+    }
+  }
+}
