@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
-  Dropdown,
+  Button,
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
@@ -13,7 +13,7 @@ import { env } from '../../../../next.config';
 import { useGoogleMap, Autocomplete } from '@react-google-maps/api';
 import { useDispatch } from 'react-redux';
 import { updateSearchPlaceInfo } from '@/client/utils/store/searchPlaceSlice';
-import { AiOutlineMenu, AiFillCalendar } from 'react-icons/ai';
+import { AiOutlineMenu, AiFillCalendar, AiOutlineSearch } from 'react-icons/ai';
 import { MdOutlineToday } from 'react-icons/md';
 import { CgToday } from 'react-icons/cg';
 import IconWithButton from '../commons/IconWithButton';
@@ -36,6 +36,16 @@ const SearchPlaceInput = ({ mapCenter }) => {
         });
     }
   };
+  const handleInputButtonClick = () => {
+    axios
+      .get(
+        `/maps/api/place/findplacefromtext/json?input=${searchPlaceInputRef.current.value}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=${env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}`
+      )
+      .then((res) => {
+        setNewLocation(res.data.candidates[0].geometry.location);
+        dispatch(updateSearchPlaceInfo(res.data.candidates[0]));
+      });
+  };
   useEffect(() => {
     if (map) {
       map.panTo(newLocation);
@@ -51,6 +61,12 @@ const SearchPlaceInput = ({ mapCenter }) => {
           onKeyDown={handleInputChange}
         />
       </Autocomplete>
+      <Button
+        className={style.SearchPlaceInput__submitButton}
+        onClick={handleInputButtonClick}
+      >
+        <AiOutlineSearch />
+      </Button>
       <UncontrolledDropdown className={style.SearchPlaceInput__dropdown}>
         <DropdownToggle color="transparent">
           <AiOutlineMenu />

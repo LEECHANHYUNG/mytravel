@@ -9,6 +9,15 @@
   align-items: center;
   &__input {
     width: 21.25rem;
+    > input {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  &__submitButton {
+    display: flex;
+    align-items: center;
+    height: 100%;
   }
   &__dropdown {
     background: transparent;
