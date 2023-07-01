@@ -2,7 +2,9 @@
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
+  padding: 0.3125rem 1rem;
+  color: var(--bs-primary-text-emphasis);
   &__icon {
     margin-right: 0.625rem;
     display: flex;

@@ -1,17 +1,12 @@
 import BreadCrumb from '@/client/components/commons/BreadCrumb';
 import React from 'react';
 import styles from '@/styles/Home.module.css';
+import ListHeader from '@/client/components/commons/ListHeader';
 
 const ALLTrips = () => {
-  const breadCrumbList = {
-    currentPath: 'my-all-trips',
-    subPath: 'all-trips',
-  };
   return (
     <div className={`${styles.main} `}>
-      <header>
-        <BreadCrumb breadCrumbList={breadCrumbList} />
-      </header>
+      <ListHeader />
       <div>allTrips</div>
     </div>
   );

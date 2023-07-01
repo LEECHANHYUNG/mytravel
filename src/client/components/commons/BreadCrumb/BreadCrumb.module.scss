@@ -1,2 +1,8 @@
 .BreadCrumb {
+  &__item {
+    &::before {
+      pointer-events: none;
+      cursor: none;
+    }
+  }
 }

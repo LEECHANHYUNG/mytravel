@@ -73,21 +73,21 @@ const SearchPlaceInput = ({ mapCenter }) => {
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem>
-            <Link href="/my-all-trips/all-trips">
+            <Link href="/myTrips/all-trips">
               <IconWithButton Icon={<AiFillCalendar />} color="transparent">
                 여행 기록
               </IconWithButton>
             </Link>
           </DropdownItem>
           <DropdownItem>
-            <Link href="/my-all-trips/all-trips">
+            <Link href="/myTrips/all-trips">
               <IconWithButton Icon={<MdOutlineToday />} color="transparent">
                 진행중 여행
               </IconWithButton>
             </Link>
           </DropdownItem>
           <DropdownItem>
-            <Link href="/my-all-trips/all-trips">
+            <Link href="/myTrips/all-trips">
               <IconWithButton Icon={<CgToday />} color="transparent">
                 오늘 여행 일정
               </IconWithButton>
