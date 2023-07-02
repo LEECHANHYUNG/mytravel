@@ -6,7 +6,7 @@ import style from './AllTripList.module.scss';
 const AllTripList = ({ allTripList }) => {
   console.log(allTripList);
   return (
-    <ListGroup>
+    <ListGroup className={style.AllTripList}>
       {Object.keys(allTripList).map((trip) => {
         return (
           <ListGroupItem key={trip}>
@@ -17,7 +17,7 @@ const AllTripList = ({ allTripList }) => {
               <span className={style.AllTripList__startDate}>
                 {allTripList[trip].startDate.split('T')[0]}
               </span>
-              <span>~</span>
+              <span className={style.AllTripList__divider}>~</span>
               <span className={style.AllTripList__endDate}>
                 {allTripList[trip].endDate.split('T')[0]}
               </span>
