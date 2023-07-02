@@ -1,0 +1,13 @@
+.DateRangeCalendar {
+  margin-top: 1.25rem;
+  &__label {
+    display: block;
+    font-size: 1rem;
+    font-weight: 700;
+  }
+  &__calendarWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
