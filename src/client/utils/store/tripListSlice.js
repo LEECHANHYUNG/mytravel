@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 const initialState = {
   allTrips: {},
@@ -7,8 +8,10 @@ export const tripListSlice = createSlice({
   name: 'tripList',
   initialState,
   reducers: {
-    updateAllTripList(state, action) {
-      state.allTrips = action.payload;
+    updateAllTripList(state) {
+      axios.get('/mytravel/allTrips.json').then((res) => {
+        console.log(res.data);
+      });
     },
   },
 });

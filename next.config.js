@@ -10,6 +10,11 @@ const nextConfig = {
         source: '/maps/api/:path*',
         destination: 'https://maps.googleapis.com/maps/api/:path*',
       },
+      {
+        source: '/mytravel/:path*',
+        destination:
+          'https://mytravel-b4618-default-rtdb.firebaseio.com/:path*',
+      },
     ];
   },
 };
