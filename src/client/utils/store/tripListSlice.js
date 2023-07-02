@@ -8,11 +8,7 @@ export const tripListSlice = createSlice({
   name: 'tripList',
   initialState,
   reducers: {
-    updateAllTripList(state) {
-      axios.get('/mytravel/allTrips.json').then((res) => {
-        console.log(res.data);
-      });
-    },
+    updateAllTripList(state) {},
   },
 });
 export const { updateAllTripList } = tripListSlice.actions;
