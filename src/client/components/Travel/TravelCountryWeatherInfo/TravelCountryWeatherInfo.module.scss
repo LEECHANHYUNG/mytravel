@@ -1,0 +1,18 @@
+.TravelCountryWeatherInfo {
+  width: auto;
+  height: 100%;
+  margin-right: 10px;
+  &__time {
+    border: 2px solid var(--bs-teal);
+    border-radius: 0.5rem;
+  }
+  &__temp {
+    color: var(--bs-info);
+  }
+  &__temp,
+  &__humidity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
