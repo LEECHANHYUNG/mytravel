@@ -9,7 +9,7 @@ const ALLTrips = ({ allTripList }) => {
   return (
     <div className={`${styles.main} `}>
       <ListHeader />
-      <div>
+      <div className={`${styles.allTripList} `}>
         <TravelNavList />
         <AllTripList allTripList={allTripList} />
       </div>

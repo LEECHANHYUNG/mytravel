@@ -2,6 +2,14 @@
   margin-top: 1.25rem;
   max-height: 41.875rem;
   overflow-y: scroll;
+  & > li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  &__info {
+  }
   &__country {
     color: var(--bs-teal);
     font-weight: 700;

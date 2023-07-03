@@ -1,5 +1,5 @@
 import React from 'react';
-import { RiGlobalFill } from 'react-icons/ri';
+import { AiOutlineHome } from 'react-icons/ai';
 import style from './ListHeader.module.scss';
 import Link from 'next/link';
 import HeaderDropdown from '../HeaderDropdown';
@@ -9,7 +9,7 @@ const ListHeader = () => {
     <header className={style.ListHeader}>
       <div className={style.ListHeader__homeButton}>
         <Link href="/">
-          <RiGlobalFill />
+          <AiOutlineHome />
         </Link>
         <HeaderDropdown />
       </div>
