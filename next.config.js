@@ -1,10 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  env: {
-    NEXT_PUBLIC_GOOGLE_MAPS_KEY: 'AIzaSyCPVfAkQF3RBuVPy6jnOKJKTeHUtG - NfoA',
-    OPEN_WEATHER_KEY: '372ce50b5281507d5cb7ff4fd10ccf16',
-  },
+
   images: {
     remotePatterns: [
       {
