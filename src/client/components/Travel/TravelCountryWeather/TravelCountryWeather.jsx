@@ -4,6 +4,8 @@ import style from './TravelCountryWeather.module.scss';
 import axios from 'axios';
 import { env } from '../../../../../next.config';
 import TravelCountryWeatherInfo from '../TravelCountryWeatherInfo';
+import { Button, UncontrolledCollapse } from 'reactstrap';
+import { BsChevronDown } from 'react-icons/bs';
 
 const TravelCountryWeather = ({ countryName }) => {
   const [weatherInfo, setWeatherInfo] = useState();
@@ -21,23 +23,37 @@ const TravelCountryWeather = ({ countryName }) => {
   }, []);
 
   return (
-    <div className={style.TravelCountryWeather}>
+    <>
       <header>
-        <h4>날씨 정보</h4>
+        <Button
+          color="transparent"
+          id="toggler"
+          className={style.TravelCountryWeather__button}
+        >
+          <span>날씨</span>
+          <span>
+            <BsChevronDown />
+          </span>
+        </Button>
       </header>
-      <div className={style.TravelCountryWeather__weatherInfo}>
-        {Array.isArray(weatherInfo) &&
-          weatherInfo.map((weather) => (
-            <TravelCountryWeatherInfo
-              key={weather.dt}
-              dateTime={weather.dt_txt}
-              temp={weather.main.temp}
-              humidity={weather.main.humidity}
-              icon={weather.weather[0].icon}
-            />
-          ))}
-      </div>
-    </div>
+      <UncontrolledCollapse
+        toggler="#toggler"
+        className={style.TravelCountryWeather}
+      >
+        <div className={style.TravelCountryWeather__weatherInfo}>
+          {Array.isArray(weatherInfo) &&
+            weatherInfo.map((weather) => (
+              <TravelCountryWeatherInfo
+                key={weather.dt}
+                dateTime={weather.dt_txt}
+                temp={weather.main.temp}
+                humidity={weather.main.humidity}
+                icon={weather.weather[0].icon}
+              />
+            ))}
+        </div>
+      </UncontrolledCollapse>
+    </>
   );
 };
 
