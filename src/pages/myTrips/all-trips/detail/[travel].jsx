@@ -49,9 +49,10 @@ export async function getStaticProps(context) {
   } catch (error) {
     travelInfo = {};
   }
-  console.log(travelInfo);
+
   return {
     props: { travelInfo },
+    revalidate: 10,
   };
 }
 export default TravelDetail;
