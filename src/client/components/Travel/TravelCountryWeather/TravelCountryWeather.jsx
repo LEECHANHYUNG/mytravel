@@ -10,7 +10,9 @@ const TravelCountryWeather = ({ countryName }) => {
   const [weatherInfo, setWeatherInfo] = useState();
   useEffect(() => {
     axios
-      .get(`/location?q=${countryName}&limit=5&appid=${env.OPEN_WEATHER_KEY}`)
+      .get(
+        `/location?q=${countryName}&limit=5&appid=${process.env.OPEN_WEATHER_KEY}`
+      )
       .then((res) => {
         axios
           .get(
