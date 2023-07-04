@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import style from './TravelCountryWeather.module.scss';
 import axios from 'axios';
-import { env } from '../../../../../next.config';
 import TravelCountryWeatherInfo from '../TravelCountryWeatherInfo';
 import { Button, UncontrolledCollapse } from 'reactstrap';
 import { BsChevronDown } from 'react-icons/bs';
@@ -15,7 +14,7 @@ const TravelCountryWeather = ({ countryName }) => {
       .then((res) => {
         axios
           .get(
-            `/forecast?lat=${res.data[0].lat}&lon=${res.data[0].lon}&appid=${env.OPEN_WEATHER_KEY}`
+            `/forecast?lat=${res.data[0].lat}&lon=${res.data[0].lon}&appid=${process.env.OPEN_WEATHER_KEY}`
           )
           .then((res) => setWeatherInfo(res.data.list));
       })
