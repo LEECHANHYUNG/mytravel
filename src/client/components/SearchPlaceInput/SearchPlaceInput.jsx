@@ -9,7 +9,6 @@ import {
 } from 'reactstrap';
 import style from './SearchPlaceInput.module.scss';
 import axios from 'axios';
-import { env } from '../../../../next.config';
 import { useGoogleMap, Autocomplete } from '@react-google-maps/api';
 import { useDispatch } from 'react-redux';
 import { updateSearchPlaceInfo } from '@/client/utils/store/searchPlaceSlice';
@@ -28,7 +27,7 @@ const SearchPlaceInput = ({ mapCenter }) => {
     if (event.key === 'Enter') {
       axios
         .get(
-          `/maps/api/place/findplacefromtext/json?input=${searchPlaceInputRef.current.value}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=${env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}`
+          `/maps/api/place/findplacefromtext/json?input=${searchPlaceInputRef.current.value}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}`
         )
         .then((res) => {
           setNewLocation(res.data.candidates[0].geometry.location);
@@ -39,7 +38,7 @@ const SearchPlaceInput = ({ mapCenter }) => {
   const handleInputButtonClick = () => {
     axios
       .get(
-        `/maps/api/place/findplacefromtext/json?input=${searchPlaceInputRef.current.value}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=${env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}`
+        `/maps/api/place/findplacefromtext/json?input=${searchPlaceInputRef.current.value}&inputtype=textquery&fields=formatted_address%2Cname%2Crating%2Copening_hours%2Cgeometry&key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_KEY}`
       )
       .then((res) => {
         setNewLocation(res.data.candidates[0].geometry.location);
